@@ -78,9 +78,13 @@ activities = {
 }
 
 
+from fastapi.responses import FileResponse
+
+
 @app.get("/")
 def root():
-    return RedirectResponse(url="/static/index.html")
+    # Serve the SPA entrypoint directly on root to avoid redirect issues
+    return FileResponse(os.path.join(current_dir, "static", "index.html"))
 
 
 @app.get("/activities")
