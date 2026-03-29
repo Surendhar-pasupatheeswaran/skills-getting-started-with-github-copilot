@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Clear loading message
       activitiesList.innerHTML = "";
 
+      // Clear and reset the select dropdown
+      activitySelect.innerHTML = '<option value="">-- Select an activity --</option>';
+
       // Populate activities list
       Object.entries(activities).forEach(([name, details]) => {
         const activityCard = document.createElement("div");
@@ -92,9 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
         messageDiv.className = "success";
         signupForm.reset();
         // Refresh the activities to show the updated participant list
-        console.log('Refreshing activities after signup...');
         fetchActivities();
-        console.log('Activities refreshed.');
       } else {
         messageDiv.textContent = result.detail || "An error occurred";
         messageDiv.className = "error";
